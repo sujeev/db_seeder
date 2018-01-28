@@ -13,7 +13,11 @@ module DbSeeder
 				else
 					time_stamp = Time.now.strftime('%Y%m%d%H%M%S%L')
 					destination = "db/seeder/#{time_stamp}_#{File.basename(file_name.underscore)}_seed.rb"
-#find if migration already exists by looking for the file_name_seed.rb, if so replace destination with that
+					existing_migrations = Dir['db/seeder/*.rb']
+					migration_result = existing_migrations.select{ |f| f.include? file_name.underscore}
+					if migration_result.count > 0
+						destination = migration_result.first
+					end
 					if !File.exists?('db/seeder')
 						empty_directory 'db/seeder'
 					end
