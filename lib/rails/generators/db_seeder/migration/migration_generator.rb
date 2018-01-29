@@ -2,7 +2,7 @@ module DbSeeder
 	module Generators
 		class MigrationGenerator < Rails::Generators::Base
 
-			desc  "This generator creates seed migration file"
+			desc  "This generator creates seeder migration file"
 			source_root File.expand_path('../templates', __FILE__)
 			argument :file_name, type: :string
 			# class_option :doc, type: :boolean, default: true, desc: "Include documentation."
